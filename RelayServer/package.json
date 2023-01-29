@@ -1,0 +1,26 @@
+{
+  "name": "churchillred",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pradhamk/ChurchillRed.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pradhamk/ChurchillRed/issues"
+  },
+  "homepage": "https://github.com/pradhamk/ChurchillRed#readme",
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "uuid": "^9.0.0",
+    "ws": "^8.12.0"
+  }
+}
