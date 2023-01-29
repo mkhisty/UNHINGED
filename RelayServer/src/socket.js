@@ -47,9 +47,9 @@ async function start_socket_server(port) {
                         fs.writeFileSync(full_path, msg["file_data"])
                         await compress(full_path)
                         file_name = full_path
+                        await distribute_all_relays(full_path, msg, "add")
                         status = 200
                     } catch (err) {}
-                    await distribute_all_relays(full_path, msg, "add")
                     ws.send(JSON.stringify({
                         status: status,
                         path: file_name
