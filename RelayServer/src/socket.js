@@ -49,7 +49,7 @@ async function start_socket_server(port) {
                         file_name = full_path
                         status = 200
                     } catch (err) {}
-                    await distribute_all_relays(full_path, msg, "add")
+                    await distribute_all_relays(file_name, msg, "add")
                     ws.send(JSON.stringify({
                         status: status,
                         path: file_name
