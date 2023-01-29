@@ -13,7 +13,7 @@ async function get_all_relays() {
 async function distribute_all_relays(file_path, msg, action) {
     const relays = await get_all_relays()
     if("add" === action) {
-        const file_data = fs.readFileSync()
+        const file_data = fs.readFileSync(file_path)
         for(const relay_addr of relays) {
             const ws = new WebSocket(relay_addr)
             ws.on("open", () => {
