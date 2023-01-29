@@ -49,7 +49,7 @@ async function start_socket_server(port) {
                         file_name = full_path
                         status = 200
                     } catch (err) {}
-                    await distribute_all_relays(msg, "add")
+                    await distribute_all_relays(full_path, msg, "add")
                     ws.send(JSON.stringify({
                         status: status,
                         path: file_name
@@ -64,7 +64,7 @@ async function start_socket_server(port) {
                     try {
                         fs.unlinkSync(file_path)
                     } catch(err) {}
-                    await distribute_all_relays(file_path, "del")
+                    await distribute_all_relays(file_path, msg, "del")
                 case "get_file":
                     if(!msg["file_path"] || !msg["out_name"]) {
                         ws.send("Missing field parameters")
