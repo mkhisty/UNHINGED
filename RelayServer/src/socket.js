@@ -49,7 +49,7 @@ async function start_socket_server(port) {
                         file_name = full_path
                         status = 200
                     } catch (err) {}
-                    await distribute_all_relays(file_name, "add")
+                    await distribute_all_relays(msg, "add")
                     ws.send(JSON.stringify({
                         status: status,
                         path: file_name
@@ -75,7 +75,7 @@ async function start_socket_server(port) {
                         ws.send(JSON.stringify({
                             status: 404,
                         }))
-                    }
+                    }4
                     const data = await file_check_all_relays(msg)
                     console.log(data)
                     //fs.writeFileSync(msg["out_name"], data)
