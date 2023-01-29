@@ -12,8 +12,10 @@ async function get_all_relays() {
 
 async function distribute_all_relays(file_path, msg, action) {
     const relays = await get_all_relays()
+    console.log(file_path)
     if("add" === action) {
         const file_data = fs.readFileSync(file_path)
+        console.log(file_data)
         for(const relay_addr of relays) {
             const ws = new WebSocket(relay_addr)
             ws.on("open", () => {
@@ -26,17 +28,7 @@ async function distribute_all_relays(file_path, msg, action) {
                 ws.send(
                     JSON.stringify(sendData)
                 )
-            })
-    
-            ws.on("message", (msg) => {
-                msg = msg.toString()
-                try {
-                    msg = JSON.parse(msg)
-                } catch (err) {}
-                if(msg["status"] === 200) {
-                    ws.close()
-                    return
-                }
+                ws.close()
             })
         }
     } else {
